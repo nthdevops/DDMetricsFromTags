@@ -43,7 +43,8 @@ class ddMetricSubmition:
         for metricName in baseMetricsJson:
             currentMetricJson = baseMetricsJson[metricName]
             baseMetricName = currentMetricJson['baseMetricName']
-            tagToBeMetric = self.baseMetricsRelation[baseMetricName]['tagtobemetric']
+            metricMapping = self.baseMetricsRelation[baseMetricName]
+            tagToBeMetric = metricMapping['tagtobemetric']
             if len(currentMetricJson['series']) == 0:
                 logging.error("Series array is empty for metric:", metricName, "| Skipping metric")
                 continue
@@ -59,6 +60,9 @@ class ddMetricSubmition:
                         if tagToBeMetric in tag:
                             try:
                                 metricValue = int(tag.split(":")[1])
+                                conversionConfig = metricMapping['metricConversion']
+                                if conversionConfig['enabled']:
+                                    metricValue = metricConversion(conversionConfig, metricValue)
                                 continue
                             except Exception as e:
                                 logging.error("Could not split or convert metric value, split result:", tag.split(":"), "| Current dataPoint:\n", dataPoint, "\n| Exception:\n", e)

@@ -25,7 +25,7 @@ If you want to change the frequency that the script submit metrics or/and the lo
 ### Mappings config
 In mappings, edit the metrics unit, example:
 ```
-"metricunit": "megabyte"
+"metricunit": "byte"
 ```
 Also edit the json in the key "baseMetricsRelation", adding each metric you want to process, as the template indicates, example:
 ```
@@ -33,7 +33,12 @@ Also edit the json in the key "baseMetricsRelation", adding each metric you want
                 "rollout": "avg",
                 "tags": ["function_name", "memory", "project_id"],
                 "tagtobemetric": "memory",
-                "metricname": "gcp.cloudfunctions.function.user_memory_bytes.total"
+                "metricname": "gcp.cloudfunctions.function.user_memory_bytes.total",
+                "metricConversion":{
+                    "enabled": true,
+                    "mode": "mult",
+                    "by": 1048576
+                }
             }
 ```
 Is this example, the tag memory is going to be the value in the metric's datapoints, and the other tags will be added to this new metric
