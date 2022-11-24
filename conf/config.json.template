@@ -1,0 +1,14 @@
+{
+    "keys": {
+        "apikey": "",
+        "appkey": ""
+    },
+    "apis": {
+        "getmetricdata":"https://api.datadoghq.com/api/v1/query",
+        "submitmetricapiurl": "https://api.datadoghq.com/api/v2/series"
+    },
+    "script": {
+        "sleepsecs": 60,
+        "loglevel": "WARN"
+    }
+}

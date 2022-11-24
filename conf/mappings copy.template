@@ -1,0 +1,14 @@
+{
+    "metrics": {
+        "metrictypeid": 3,
+        "metricunit": "byte/kilobyte/megabyte/etc",
+        "baseMetricsRelation": {
+            "REPLACE_WITH_METRIC_NAME":{
+                "rollout": "avg/max/min/sum",
+                "tags": ["TAG1", "TAG2", "ADD_AS_MANY_TAGS_AS_NEEDED"],
+                "tagtobemetric": "TAG_TO_BECOME_METRIC_VALUE",
+                "metricname": "NEW_METRIC_NAME"
+            }
+        }
+    }
+}
