@@ -10,14 +10,14 @@ def jsonBytesSize(jsonDict):
    return int(len(byteZon)/1000)
 
 def metricConversion(conversionConfig, value):
-   match conversionConfig['mode']:
-        case 'div':
-            return value/conversionConfig['by']
-        case 'mult':
-            return value*conversionConfig['by']
-        case 'add':
-            return value+conversionConfig['by']
-        case 'sub':
-            return value-conversionConfig['by']
-        case _:
-            return value   # case if is not found
+    matchOn = conversionConfig['mode']
+    if matchOn == 'div':
+        return value/conversionConfig['by']
+    elif matchOn == 'mult':
+        return value*conversionConfig['by']
+    elif matchOn == 'add':
+        return value+conversionConfig['by']
+    elif matchOn == 'sub':
+        return value-conversionConfig['by']
+    else:
+        return value   # case if is not found
