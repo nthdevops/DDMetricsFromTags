@@ -23,7 +23,7 @@ If you want to change the frequency that the script submit metrics or/and the lo
 ```
 
 ### Mappings config
-In mappings, edit the metrics unit, example:
+Edit the name of the file mappings.json.template to mappings.json, edit the metrics unit, example:
 ```
 "metricunit": "byte"
 ```
